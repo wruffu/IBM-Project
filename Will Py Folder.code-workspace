@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Will Py Folder",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"C_Cpp.errorSquiggles": "disabled"
+	}
+}
