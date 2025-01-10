@@ -1,32 +1,21 @@
 function addRecommendation() {
-  // Get the message of the new recommendation
   let recommendation = document.getElementById("new_recommendation");
-  // If the user has left a recommendation, display a pop-up
-  if (recommendation.value != null && recommendation.value.trim() != "") {
-    console.log("New recommendation added");
-    //Call showPopup here
+  if (recommendation.value.trim() !== "") {
     showPopup(true);
-    // Create a new 'recommendation' element and set it's value to the user's message
-    var element = document.createElement("div");
-    element.setAttribute("class","recommendation");
-    element.innerHTML = "\<span\>&#8220;\</span\>" + recommendation.value + "\<span\>&#8221;\</span\>";
-    // Add this element to the end of the list of recommendations
-    document.getElementById("all_recommendations").appendChild(element); 
-    
-    // Reset the value of the textarea
+    const element = document.createElement("div");
+    element.classList.add("recommendation");
+    element.textContent = `"${recommendation.value}"`;
+    document.getElementById("all_recommendations").appendChild(element);
     recommendation.value = "";
   }
 }
 
-function showPopup(bool) {
-  if (bool) {
-    document.getElementById('popup').style.visibility = 'visible';
-
-    // Hide the popup after a few seconds
-    setTimeout(function() {
-      showPopup(false);
-    }, 1000); // Popup will be visible for 1 seconds    
-  } else {
-    document.getElementById('popup').style.visibility = 'hidden';
+function showPopup(visible) {
+  const popup = document.getElementById("popup");
+  if (popup) {
+    popup.style.visibility = visible ? "visible" : "hidden";
+    if (visible) {
+      setTimeout(() => showPopup(false), 1000);
+    }
   }
 }
